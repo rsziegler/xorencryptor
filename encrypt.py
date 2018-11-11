@@ -1,7 +1,6 @@
 from operator import xor
 
 class encrypt:
-  @staticmethod
   def decfile(decfile, key):
     txtfile = open(decfile, "r")
     text = txtfile.read().split()
@@ -31,7 +30,6 @@ class encrypt:
 
     txtfile.close()
 
-  @staticmethod
   def encfile(encfile, key):
     txtfile = open(encfile, "r")
     text = txtfile.read()
@@ -60,53 +58,6 @@ class encrypt:
 
     txtfile.close()
 
-class filemovement:
-  @staticmethod
-  def createfile(path):
-    txtfile = open(path, "w+")
-    txtfile.close()
 
-  @staticmethod
-  def readfile(readfile):
-    txtfile = open(readfile, "r")
-    text = txtfile.read()
-    print(text)
-    txtfile.close()
-  
-  @staticmethod
-  def writefile(writefile, text):
-    txtfile = open(writefile, "w")
-    txtfile.write(text)
-    txtfile.close()
 
-class cmdline:
-  # command format: operation to key
-  @staticmethod
-  def execommand(command):
-    try:
-      commands = command.split()
-      do = commands[0]
-      if len(commands) == 2:
-        to = commands[1]
-      elif len(commands) == 3:
-        to = commands[1]
-        key = commands[2]
 
-      if do == "enc":
-        encrypt.encfile(to, key)
-      elif do == "dec":
-        encrypt.decfile(to, key)
-      elif do == "exit":
-        return False
-      elif do == "nf":
-        filemovement.createfile(to)
-      elif do == "rf":
-        filemovement.readfile(to)
-      elif do == "wf":
-        text = input("")
-        filemovement.writefile(to, text)
-      else:
-        print("not a valid operation")
-    except:
-      print("not valid syntax")
-    return True
